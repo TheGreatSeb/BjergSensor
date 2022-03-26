@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Bjergsensor</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='main.css')}}" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@500&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='favicon.ico')}}">
+</head>
+
+<body>
+    <h1>
+        Bjergsensor 🗻
+    </h1>
+    <p style="text-align: center;">
+        Et projekt lavet af Anas, Danny, Josefine og Sebastian
+    </p>
+
+    <div class="main">
+        <div class="mainChild">
+            <h2>Temperaturer og næringsstoffer</h2>
+            <p>Her ser vi en graf af temperaturer og næringsstoffer</p>
+            <div class="buttonContainer">
+                <button id="graph-switcher">Skift Graf</button>
+            </div>
+            <div id="graph-container">
+                <img src="data:image/png;base64,{{ grafDataTemp }}" id="temperature-graph" />
+                <img src="data:image/png;base64,{{ grafDataDrug }}" id="nutrition-graph" class="hidden" />>
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+        let button = document.getElementById("graph-switcher");
+        let graph1 = document.getElementById("temperature-graph");
+        let graph2 = document.getElementById("nutrition-graph");
+
+        function switchGraph() {
+            graph1.classList.toggle("hidden");
+            graph2.classList.toggle("hidden");
+        }
+
+        button.addEventListener("click", switchGraph);
+    </script>
+
+</body>
+
+</html>

@@ -1,12 +1,15 @@
+#Injector for temp
+
 import sqlite3
 
 #Connecting to Database
-conn = sqlite3.connect('database/test.db')
+conn = sqlite3.connect('database/main.db')
 memoryConn = sqlite3.connect(':memory:')
 cur = conn.cursor()
 #reading text file
-text_file = open("data/test.txt", "r")
+text_file = open("data/temp.txt", "r")
 lines = text_file.readlines()
+lines[0]
 print(lines)
 #writing text data into database
 for line in lines:
